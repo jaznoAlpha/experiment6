@@ -14,3 +14,60 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+#sideMenu {
+    margin-top: 62px;
+}
+
+#navbarContainer {
+    display: inline;
+    line-height: 55px;
+    img{
+        float: left;
+        height: 55px;
+        width: 55px;
+        margin: 0px 10px;
+    }
+    #logoText{
+        float: left;
+        vertical-align: middle;
+        font-size: 2em;
+        font-weight: bold;
+    }
+    #avatar{
+        float: right;
+        position: relative;
+        top: 7.5px;
+        height: 40px;
+        width: 40px;
+        color: white;
+        margin: 0px 10px;
+        border-radius: 50%;
+        line-height: 40px;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 1.3em;
+    }
+    #avatar:hover{
+        top: 5px;
+        height: 45px;
+        width: 45px;
+        margin: 0px 7.5px;
+        line-height: 45px;
+        font-size: 1.4625em;
+    }
+}
+
+//Color Scheme
+.primaryBCG{
+    background-color: red;
+}
+.textonPrimary{
+    color: white;
+}
+.lightBCG{
+    background-color: white;
+}
+.textonLight{
+    color: red;
+}

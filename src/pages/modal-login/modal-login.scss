@@ -1,0 +1,18 @@
+page-modal-login {
+    ion-navbar{
+        display: inline;
+        #ionTitle{
+            float: left;
+            text-align: center;
+            width: 20%;
+            margin-left: 40%;
+        }
+        #closeBTN{
+            float: right;
+            margin-top: 20px;
+        }
+    }
+    .authenticated{
+        display: none;
+    }    
+}

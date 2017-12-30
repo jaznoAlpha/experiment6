@@ -1,10 +1,16 @@
+//Angular
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+
+//Ionic
+import { Nav, Platform, ModalController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+//Firebase
+import firebase from 'firebase';
+
+//Service
+import { AuthService } from '../services/auth.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,18 +18,50 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: string = 'HomePage';
 
   pages: Array<{title: string, component: any}>;
+  isAuthenticated: boolean = false;
+  userInitial;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen, 
+              public modal: ModalController,
+              public events: Events,
+              private authService: AuthService) 
+  {
+    firebase.initializeApp({
+      apiKey: "AIzaSyDXT4KnlMs6WwMIC2JwXAvxtXj4Hqf1YX4",
+      authDomain: "dhi-tester-1.firebaseapp.com"
+    });
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.isAuthenticated = true;
+        this.authService.user = 'auth';
+        this.setUserInitial();
+        console.log(this.authService.user);
+      }
+      else {
+        this.isAuthenticated = false;
+        this.authService.user = 'not';
+        this.setUserInitial();
+        console.log('Not Authenticated!');
+      }
+    });
     this.initializeApp();
+    events.subscribe('login', (authenticated) => {
+      this.isAuthenticated = authenticated;
+      this.setUserInitial()
+    });
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Home', component: 'HomePage' }, { title: 'Modal', component: 'ModalLoginPage' }, 
     ];
+
+    // sets the initial used in login button
+    this.setUserInitial()
 
   }
 
@@ -40,5 +78,14 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  openLogin() {
+    const myModal = this.modal.create('ModalLoginPage');
+    myModal.present();
+  }
+
+  setUserInitial(){
+    this.userInitial = this.authService.user.charAt(0);
   }
 }
