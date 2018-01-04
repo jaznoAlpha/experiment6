@@ -1,0 +1,45 @@
+login-picture {
+    #imagePortal{
+        background-color: blue;
+        height: inherit;
+        width: inherit;
+        margin-left: 30%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 1px 0.2px 15px rgb(66, 66, 66);
+        border-radius: 50%;
+        overflow: hidden;
+        #imageBackground{
+            background-color: red;
+            height: 100%;
+            width: 100%;
+            // login-picture-background{
+            //     position: absolute;
+            // }
+            #imageEditorSelect{
+                display: none;
+                background-color: rgba(0, 0, 0, 0.500);
+                height: 100%;
+                width: 100%;
+                cursor: pointer;
+                #imageEditorSelectText{
+                    position: relative;
+                    color: rgba(255, 255, 255, 0.750);
+                    width: 20%;
+                    text-align: center;
+                    line-height: 100%;
+                    vertical-align: middle;
+                    font-size: 1.3em;
+                    top: 45%;
+                    left: 40%;
+                }
+            }
+        }
+        #imageBackground:hover{
+            #imageEditorSelect{
+                display: block;
+            }
+        }
+    }
+    
+}

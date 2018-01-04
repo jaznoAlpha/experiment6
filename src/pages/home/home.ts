@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
+
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AuthService } from '../../services/auth.service';
+
 
 @IonicPage()
 @Component({
@@ -14,12 +11,14 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
-  isAuthenticated = false;
+  isAuthenticated: boolean;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public events: Events) {
+              public events: Events,
+              private authService: AuthService) {
+    this.isAuthenticated = this.authService.isAuthenticated;
     events.subscribe('login', (authenticated) => {
-      this.isAuthenticated = authenticated;
+      this.isAuthenticated = this.authService.isAuthenticated;
     });
   }
 

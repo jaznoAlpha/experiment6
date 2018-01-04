@@ -1,16 +1,12 @@
 page-modal-login {
-    ion-navbar{
-        display: inline;
-        #ionTitle{
-            float: left;
-            text-align: center;
-            width: 20%;
-            margin-left: 40%;
+    #login-picture-container{
+        login-picture{
+            height: 250px;
+            width: 250px;
         }
-        #closeBTN{
-            float: right;
-            margin-top: 20px;
-        }
+    }
+    #ionTitle{
+        text-align: center;
     }
     .authenticated{
         display: none;

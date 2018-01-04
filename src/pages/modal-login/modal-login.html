@@ -1,26 +1,19 @@
-<ion-header>
-
-  <ion-navbar>
-    <h1 id="ionTitle">Login</h1>
-    <button ion-button clear id="closeBTN">Close</button>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
+<ion-content padding class="no-scroll">
+  <h1 id="ionTitle">Hello {{userName}}, would you like to {{state}}?</h1> <hr>
+  <div id="login-picture-container"><login-picture></login-picture></div> <hr>
   <form #f="ngForm" (ngSubmit)="onLogin(f)">
     <ion-list>
       <ion-item>
-        <ion-label fixed>Email</ion-label>
+        <ion-label floating>Email</ion-label>
         <ion-input type="email" ngModel name="email" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label fixed>Password</ion-label>
+        <ion-label floating>Password</ion-label>
         <ion-input type="password" ngModel name="password" required></ion-input>
       </ion-item>
     </ion-list>
     <button id="loginBTN" ion-button block type="submit" [disabled]="!f.valid">Login</button>
   </form>
   <button id="logoutBTN" ion-button block (click)="onLogout()">Logout</button>
+  <button ion-button full clear (click)="onClose()">Close</button>
 </ion-content>

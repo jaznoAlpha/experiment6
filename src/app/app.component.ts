@@ -22,6 +22,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
   isAuthenticated: boolean = false;
+  searchBoolean: boolean = false;
   userInitial;
 
   constructor(public platform: Platform, 
@@ -60,7 +61,7 @@ export class MyApp {
       { title: 'Home', component: 'HomePage' }, { title: 'Modal', component: 'ModalLoginPage' }, 
     ];
 
-    // sets the initial used in login button
+    // helper method that sets the initial used in login button
     this.setUserInitial()
 
   }
@@ -87,5 +88,16 @@ export class MyApp {
 
   setUserInitial(){
     this.userInitial = this.authService.user.charAt(0);
+  }
+
+  onSearch() {
+    let searchBar = document.getElementById("searchBarInput");
+    this.searchBoolean = !this.searchBoolean;
+    if(this.searchBoolean){
+      searchBar.style.display = "block";
+    }
+    else{
+      searchBar.style.display = "none";
+    }
   }
 }

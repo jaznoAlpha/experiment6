@@ -1,0 +1,28 @@
+login-picture-background{
+    .test1{
+        position: absolute;
+        // background-color: rgba(0, 128, 0, 0.356);
+        #LPBimgSpace{
+            visibility: hidden;
+        }
+        #LPBouterDiv{
+            position: absolute;
+            padding: 125px 125px 125px 125px;
+            z-index: 998;
+            top: 30%;
+            left: 30%;
+            //USE TYPESCRIPT TO DYNAMICALLY CHANGE SHADOW
+            //TO COVER WHOLE IMAGE
+            box-shadow: 0 0 0 60px #fff; 
+        }
+        #LPBinnerDiv{
+            position: absolute;
+            padding: 125px 125px 125px 125px;
+            z-index: 999;
+            top: 0%;
+            left: 1%;
+            box-shadow: 0 0 0 60px #fff; 
+            border-radius:50%;
+        }
+    }
+}
